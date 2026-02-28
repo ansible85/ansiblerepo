@@ -1,0 +1,15 @@
+---
+- name: tesing playbook
+  hosts: arista
+  connection: network_cli
+  become: true
+
+  tasks:
+    - name: "Task 1 - show command"
+      arista.eos.eos_command:
+        commands: show version
+      register: result
+
+    - name: "print the output"
+      debug:
+        msg: "{{ result }}"
